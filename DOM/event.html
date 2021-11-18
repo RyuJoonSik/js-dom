@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function printResult()
+        {
+            var btnPrint = document.getElementById("btn-Print");
+            var x = prompt("x의 값을 입력하세요.", 0);
+            var y = prompt("y의 값을 입력하세요.", 0);
+
+            x = parseInt(x); /* 숫자+문자일 경우 숫자부분까지만 값으로 받는다. */
+            y = parseInt(y);
+
+            // alert(x + y);
+            // span1.innerText = x+y;
+            btnPrint.type="text";
+            btnPrint.value = x + y;
+        }
+        function init(){
+            span2.onclick = printResult;
+        }
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <input type="button" value="클릭" onclick="alert('안녕하세요!');" id="btn-Print">
+    <br>
+    <span id="span2">스팬입니다.</span>
+    
+</body>
+</html>

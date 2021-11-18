@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tap-wrapper{width: 960px; margin: 0 auto;}
+        .tab-menu{padding-left: 0; position: relative; z-index: 1;}
+        .tab-menu li{float: left; list-style: none; margin-right: 10px;}
+        .tab-menu::after{content: ''; display: block; clear: both;}
+        .tab-menu li a{color: #999; text-transform: uppercase; font-weight: bold; line-height: 27px; text-decoration: none; padding: 0 20px; display: block;}
+        #tab-content{min-height: 300px;}
+        #tab-content > div{display: none;}
+        #tab-content > div:first-child{display: block;}
+        .nav{position: relative;}
+        .highlight{position: absolute; width: 98px; top: 0; left: 0; bottom: 0; background: #000; transition: 0.4s cubic-bezier(0.65, 0, 0.35, 1);}
+    </style>
+</head>
+<body>
+    <div class="tap-wrapper">
+        <div class="nav">
+            <ul class="tab-menu">
+                <li><a href="#tab-1">basic1</a></li>
+                <li><a href="#tab-2">basic2</a></li>
+                <li><a href="#tab-3">basic3</a></li>
+            </ul>
+            <span class="highlight"></span>
+        </div>
+        <div id="tab-content">
+            <div id="tabs-1">
+                <h2>Basic Plan1</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum id non blanditiis. Quas inventore doloribus sed ipsam facilis molestias distinctio tempora illum, vero odit quibusdam at quam blanditiis voluptas ipsa.</p>
+            </div>
+            <div id="tabs-2">
+                <h2>Basic Plan2</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum id non blanditiis. Quas inventore doloribus sed ipsam facilis molestias distinctio tempora illum, vero odit quibusdam at quam blanditiis voluptas ipsa.</p>
+            </div>
+            <div id="tabs-3">
+                <h2>Basic Plan3</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum id non blanditiis. Quas inventore doloribus sed ipsam facilis molestias distinctio tempora illum, vero odit quibusdam at quam blanditiis voluptas ipsa.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabMenu = document.querySelectorAll('.tab-menu li');
+            const tabContent = document.querySelectorAll('#tab-content > div');
+            const highLight = document.querySelector('.highlight');
+
+            tabMenu.forEach((element, idx) => {
+                element.addEventListener('click', function(e){
+                    e.preventDefault();
+                    showContent(idx);
+                    moveHighLight(idx);
+                });
+            });
+
+            function showContent(num){
+                tabContent.forEach(function(item){
+                    item.style.display = 'none';
+                })
+                tabContent[num].style.display = 'block';
+            }
+
+            function moveHighLight(num){
+                const newLeft = tabMenu[num].offsetLeft;
+                const newWidth = tabMenu[num].offsetWidth;
+                highLight.style.left = newLeft + 'px';
+                highLight.style.width = newWidth + 'px';
+            }
+        });
+    </script>
+</body>
+</html>

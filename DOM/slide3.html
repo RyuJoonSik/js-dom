@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        li{list-style: none;}
+
+        .slide_wrapper{
+            /* position: relative; */
+            width: 960px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .slides{
+            position: relative;
+            left: 0;
+            top: 0;
+            transition: left 0.5s ease-out;
+            /* width: 2610px; */
+        }
+
+        .slides li:not(:last-child){
+            float: left;
+            margin-right: 30px;
+        }
+
+        .slides li img{
+            display: block;
+        }
+
+        .controls{
+            text-align: center;
+        }
+
+        .controls span{
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide_wrapper">
+        <ul class="slides">
+            <li><img src="https://placehold.it/300x300" alt=""></li>
+            <li><img src="https://placehold.it/300x300" alt=""></li>
+            <li><img src="https://placehold.it/300x300" alt=""></li>
+            <li><img src="https://placehold.it/300x300" alt=""></li>
+            <li><img src="https://placehold.it/300x300" alt=""></li>
+            <li><img src="https://placehold.it/300x300" alt=""></li>
+            <li><img src="https://placehold.it/300x300" alt=""></li>
+            <li><img src="https://placehold.it/300x300" alt=""></li>
+        </ul>
+        <p class="controls">
+            <span class="prev">prev</span>
+            <span class="next">next</span>
+        </p>
+    </div>
+    <script>
+        var slides = document.querySelector('.slides'),
+            slide = document.querySelectorAll('.slides li'),
+            currentIdx = 0,
+            slideCount = slide.length,
+            prevBtn = document.querySelector('.prev'),
+            nextBtn = document.querySelector('.next'),
+            slideWidth = 300,
+            slideMargin = 30;
+
+            slides.style.width = (slideWidth + slideMargin) * slideCount - slideMargin + 'px';
+
+            function moveSlide(num){
+                slides.style.left = - num * (slideWidth + slideMargin) + 'px';
+                currentIdx = num;
+            }
+
+            nextBtn.addEventListener('click', function(){
+                if(currentIdx < slideCount - 3){
+                    moveSlide(currentIdx + 1);
+                }
+                else{
+                    moveSlide(0);
+                }
+            })
+
+            prevBtn.addEventListener('click', function(){
+                if(currentIdx == 0){
+                    moveSlide(slideCount - 3);
+                }
+                else{
+                    moveSlide(currentIdx - 1);
+                }
+            })
+
+            moveSlide(0);
+    </script>
+</body>
+</html>

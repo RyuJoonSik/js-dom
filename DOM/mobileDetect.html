@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #d0d9e0;
+            height: 100vh;
+        }
+
+        .phone{
+            width: 656px;
+            height: 1024px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background: #000;
+        }
+
+        .content{
+            width: 414px;
+            height: 736px;
+            position: absolute;
+            left: 128px;
+            top: 157px;
+            background: #fff;
+        }
+
+        iframe{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone">
+        <div class="content">
+            <iframe src="https://m.daum.net" frameborder="0"></iframe>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+        integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw=="
+        crossorigin="anonymous"></script>
+    <script>
+        var ratio = window.devicePixelRatio;
+        console.log(ratio);
+        if(ratio >= 2){
+            // document.querySelector('.pc').style.display = 'none';
+            // document.querySelector('.content iframe').setAttribute('src', 'https://m.daum.net');
+            location.href = 'mobileIndex.html';
+        }
+        else{
+            // document.querySelector('.mobile').style.display = 'none';
+        }
+
+        // if (Modernizr.touchevents) {
+            // supported
+            // document.querySelector('.pc').style.display = 'none';
+            // console.log((location.href));
+            // document.querySelector('.content iframe').setAttribute('src', 'https://m.daum.net');
+        // } else {
+            // not-supported
+            // document.querySelector('.mobile').style.display = 'none';
+            // console.log((location.href));
+        // }
+
+        /* var uAgent = navigator.userAgent;
+        console.log(uAgent); */
+
+    </script>
+</body>
+
+</html>

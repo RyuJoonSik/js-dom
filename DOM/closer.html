@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function f1(){
+            var a = 1;
+
+            return function f2(){
+                return a;
+            }
+        }
+
+        // f1이 f2를 반환하는데 f2가 f1의 a를 반환함으로써 f1가 사용된 후에도 자원을 해제 못하는 상황이다.
+        var f = f1();
+        var a = f();
+        alert(a);
+    </script>
+</body>
+</html>

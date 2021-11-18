@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>반복문</h1>
+    <h2>for</h2>
+    <div id="for"></div>
+    <h2>forEach</h2>
+    <ul id="foreach"></ul>
+    <h2>for of</h2>
+    <ul id="forof"></ul>
+    <h2>for in</h2>
+    <ul id="forin"></ul>
+    <h2>do while</h2>
+    <ul id="doWhile"></ul>
+    <hr>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var fruits = ["apple", "orange", "cherry"];
+
+            for(var i = 0; i < fruits.length; i++)
+                document.getElementById('for').innerHTML += '<li>' + fruits[i] + '</li>';
+            
+            fruits.forEach(function(item, index){
+                document.getElementById('foreach').innerHTML += '<li>' + fruits[index] + '</li>';
+            });
+
+            var item;
+            for(item of fruits){
+                document.getElementById('forof').innerHTML += '<li>' + item + '</li>';
+            }
+
+            var person = {pname : '홍길동', page : '200', pgender : '남성'};
+            for(var x in person){
+                document.getElementById('forin').innerHTML += '<li>' + x + ' : ' + person[x] + '</li>';
+            }
+
+            var y = 0;
+            do{
+                document.getElementById('doWhile').innerHTML += '<li>' + fruits[y] + '</li>';
+                y++;
+            }
+            while(y < fruits.length)
+        })
+    </script>
+</body>
+</html>

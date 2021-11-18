@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gallery{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .gallery li{
+            float: left;
+            width: 48%;
+            margin: 1%;
+        }
+
+        .gallery li img{
+            transition: opacity 0.3s ease-in-out;
+            height: 400px;
+        }
+
+        .gallery li img:hover{
+            opacity: .75;
+        }
+
+        #lightbox-overlay{
+            opacity: 0;
+            pointer-events: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(29, 31, 33, .95);
+            transition: opacity .3s ease-in;
+        }
+
+        #lightbox-overlay.visible{
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lightbox-image{
+            max-height: 90%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            max-width: 90%;
+            background: transparent url("images/img1.jpg") 50% 50% no-repeat;
+            text-indent: -99999px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <ul class="gallery">
+            <li><a href="#" alt="Gallery image"><img src="images/img1.jpg" data-lightBox="images/img1.jpg" alt="Gallery image"></a></li>
+            <li><a href="#" alt="Gallery image"><img src="images/img2.jpg" data-lightBox="images/img2.jpg" alt="Gallery image"></a></li>
+            <li><a href="#" alt="Gallery image"><img src="images/img3.jpg" data-lightBox="images/img3.jpg" alt="Gallery image"></a></li>
+            <li><a href="#" alt="Gallery image"><img src="images/img4.png" data-lightBox="images/img4.png" alt="Gallery image"></a></li>
+        </ul>
+    </div>
+
+    <div id="lightbox-overlay">
+        <img src="" alt="Lightbox image" title="Click anywhere to close" id="lightbox-image">
+    </div>
+    <script>
+        document.addEventListener('click', lightbox);
+
+        function lightbox(e){
+            e.preventDefault();
+
+            var elem = e.target,
+                elemId = e.target.getAttribute('id'),
+                lightBoxImg = document.getElementById('lightbox-image'),
+                lightBox = document.getElementById('lightbox-overlay'),
+                newImg = new Image();
+            
+            if(e.target.hasAttribute('data-lightBox')){
+                newImg.onload = function(){
+                    lightBoxImg.src = this.src;
+                }
+                // lightBoxImg.src = '';
+                newImg.src = elem.getAttribute('data-lightBox');
+                lightBox.classList.add('visible');
+            }
+
+            if(elemId == 'lightbox-overlay' || elemId == 'lightbox-image'){
+                lightBox.classList.remove('visible');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 문자열로 받는다.
+        var x = prompt("x의 값을 입력하세요.", 0);
+        var y = prompt("y의 값을 입력하세요.", 0);
+
+        x = parseInt(x); /* 숫자+문자일 경우 숫자부분까지만 값으로 받는다. */
+        y = parseInt(y);
+
+        alert(x + y);
+
+        var answer = confirm("정말로 삭제하시겠습니까?");
+        if(answer)
+            alert("삭제되었습니다.");
+    </script>
+</body>
+</html>

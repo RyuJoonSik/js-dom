@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        body {
+            background: green;
+            overflow-y: scroll;
+            padding-top: 70px;
+        }
+
+        header {
+            margin-top: 20px;
+            background: linear-gradient(white 50px, rgba(255, 255, 255, 0.5) 50px, rgba(255, 255, 255, 0.5));
+            height: 50px;
+            overflow: hidden;
+            transition: height 0.4s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        nav {
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        nav>ul>li {
+            float: left;
+            line-height: 50px;
+            position: relative;
+        }
+
+        nav>ul>li:hover ul{
+            display: block;
+        }
+
+        nav>ul>li a{ 
+            display: block; 
+            padding: 0 35px;
+        }
+
+        nav>ul>li ul {
+            width: 100%;
+            display: none;
+            position: absolute;
+        }
+
+        nav>ul>li ul li {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="mainmenu">
+                <li><a>1st menu</a>
+                    <ul class="submenu">
+                        <li><a>2nd menu</a></li>
+                        <li><a>2nd menu</a></li>
+                    </ul>
+                </li>
+                <li><a>2nd menu</a>
+                    <ul class="submenu">
+                        <li><a>2nd menu</a></li>
+                        <li><a>2nd menu</a></li>
+                        <li><a>2nd menu</a></li>
+                        <li><a>2nd menu</a></li>
+                    </ul>
+                </li>
+                <li><a>3rd menu</a>
+                    <ul class="submenu">
+                        <li><a>2nd menu</a></li>
+                        <li><a>2nd menu</a></li>
+                    </ul>
+                </li>
+                <li><a>4th menu</a>
+                    <ul class="submenu">
+                        <li><a>2nd menu</a></li>
+                        <li><a>2nd menu</a></li>
+                        <li><a>2nd menu</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias temporibus libero fugiat consequatur ducimus nulla, vero hic! Accusantium atque obcaecati architecto cum, illum quam neque nobis, pariatur sint, veniam laboriosam.</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var header = document.querySelector('header');
+            var mainMenuList = document.querySelectorAll('.mainmenu li');
+            var nav = document.querySelector('nav');
+            var subMenu = document.querySelectorAll('.submenu');
+            var headerHeight = header.offsetHeight;
+            var subMenuHeight = 0;
+            
+            // for(let i = 0; i < subMenu.length; i++){
+            //     if(subMenu[i].offsetHeight > subMenuHeight){
+            //         subMenuHeight = subMenu[i].offsetHeight;
+            //     }
+            // }
+            
+            for(let i = 0; i < mainMenuList.length; i++){
+                mainMenuList[i].addEventListener('mouseover', function(){
+                    subMenuHeight = this.querySelector('ul').offsetHeight;
+                    header.style.height = headerHeight + subMenuHeight + 'px';
+                })
+    
+                mainMenuList[i].addEventListener('mouseout', () => {
+                    header.style.height = headerHeight + 'px';
+                })
+                
+            }
+
+        });
+    </script>
+</body>
+
+</html>

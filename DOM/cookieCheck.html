@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .notice{
+            position: fixed;
+            padding: 20px;
+            bottom: 1px solid #ccc;
+            top: 100px;left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button onClick="deleteCookie();">delete</button>
+    <div class="notice">Notice</div>
+    <script>
+        
+        console.log(document.cookie);
+        var currentCookie = document.cookie;
+        var cookieCheck = currentCookie.indexOf('ABC');
+        console.log(cookieCheck);
+
+        if(cookieCheck != -1){
+            document.querySelector('.notice').style.display = 'none';
+        }
+        else{
+            document.querySelector('.notice').style.display = 'block';
+        }
+
+        var date = new Date(); //GMT
+        
+        date.setDate(date.getDate() + 7);
+        var setCookie = '';
+        setCookie += 'CookieName = ABC;';
+        setCookie += 'expires = ' + date.toUTCString();
+
+        console.log(setCookie);
+        document.cookie = setCookie;
+
+        function deleteCookie(){
+            var date = new Date(); //GMT
+        
+            date.setDate(date.getDate() - 1);
+            var setCookie = '';
+            setCookie += 'CookieName = ABC;';
+            setCookie += 'expires = ' + date.toUTCString();
+            console.log('cookie deleted');
+        }
+    </script>
+</body>
+</html>

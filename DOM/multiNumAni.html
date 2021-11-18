@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .number_animation{
+            width: 100px;
+            font-size: 3em;
+            margin: 0 auto;
+            border: 1px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="number_animation" data-rate="80">0</div>
+    <div class="number_animation" data-rate="60">0</div>
+    <div class="number_animation" data-rate="40">0</div>
+    <script>
+        var numAnimation = document.querySelectorAll('.number_animation');
+        
+        for(var i = 0; i < numAnimation.length; i++){
+            changeNum(i);
+        }
+
+        function changeNum(idx){
+            var num = 0;
+            var target = numAnimation[idx].dataset.rate;
+            var timer = setInterval(function(){
+                ++num;
+                numAnimation[idx].innerText = num;
+                if(num == target){
+                    clearInterval(timer);
+                }
+            }, 10)
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var add = new Function("x, y", "return x + y;");
+        
+        // var add = function(x, y){
+        //     return x+y;
+        // };
+        document.write(add(3, 6));
+
+        function add(x, y){
+            // function 객체에 매개변수를 받는 arguments배열이 있다.
+            // alert(arguments.length);
+            alert(typeof arguments[5]);
+
+            // 매개변수는 arguments의 요소를 참조하는 이름일 뿐이다
+            return x+y;
+        }
+
+        // 자바스크립트는 매개변수에 값이 대입되지 않는다.
+        document.write(add(16, 4, 5, 6, 7,"hello"));
+    </script>
+</body>
+</html>
